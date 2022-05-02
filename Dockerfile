@@ -1,4 +1,4 @@
-FROM node:16.13.0-alpine as build
+FROM node:16-alpine as build
 
 WORKDIR /app
 
@@ -16,7 +16,7 @@ RUN cd /app && corepack yarn workspace @uppy/companion build
 # Now remove all non-prod dependencies for a leaner image
 RUN cd /app && corepack yarn workspaces focus @uppy/companion --production
 
-FROM node:16.13.0-alpine
+FROM node:16-alpine
 
 WORKDIR /app
 
